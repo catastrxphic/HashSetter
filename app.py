@@ -18,7 +18,13 @@ def upload_file():
 
         # 🔍 Analyze image and get top items
         labels = img_detection.analyze_image_wlabels(filepath)
-        hashtags = img_detection.match_labels_to_hashtags(labels)
+        hashtags = []
+
+        # get trending hashtags or suggested hashtags
+        for label in labels:
+            fallback = img_detection.match_labels_to_hashtags([label])
+            trending = img_detection.get_trending_hashtags_from_ritetag(label, fallback_hashtags=fallback)
+            hashtags.extend(trending)
 
         return render_template('upload.html', hashtags=hashtags, labels=labels)
 

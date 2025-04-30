@@ -1,33 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Photo Hashtag Suggester</title>
+  <meta charset="UTF-8">
+  <title>Hashtag Suggester ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #fdf6e3;
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #e0cda9;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #d8b4a0;
+      margin-top: 2rem;
+    }
+
+    form {
+      background-color: #2b2b2b;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    input[type="file"] {
+      margin-bottom: 1rem;
+      color: #fdf6e3;
+      background-color: #3a3a3a;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #555;
+    }
+
+    button {
+      background-color: #a67b5b;
+      color: #fff8e1;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #8c5e3c;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #2e2e2e;
+      margin: 0.4rem 0;
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      border-left: 4px solid #d6b089;
+      font-size: 1rem;
+    }
+
+    .caption {
+      font-style: italic;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      color: #aaa;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-    <h1>Upload a Photo 📷</h1>
-    
+  <div class="container">
+    <h1>HashSetter: The Hashtag Trend Setter for Creators 📷</h1>
+    <p class="caption">An AI archive of curated trends to grow your voice, one hashtag at a time</p>
+
     <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="photo" accept="image/*" required>
-        <button type="submit">Upload & Analyze</button>
+      <input type="file" name="photo" accept="image/*" required>
+      <button type="submit">Upload & Analyze</button>
     </form>
 
     {% if labels %}
-        <h2>Detected Items:</h2>
-        <ul>
-            {% for label in labels %}
-                <li>{{ label }}</li>
-            {% endfor %}
-        </ul>
+      <h2>🪞 Detected Items:</h2>
+      <ul>
+        {% for label in labels %}
+          <li>{{ label }}</li>
+        {% endfor %}
+      </ul>
     {% endif %}
 
     {% if hashtags %}
-        <h2>Suggested Hashtags:</h2>
-        <ul>
-            {% for hashtag in hashtags %}
-                <li>{{ hashtag }}</li>
-            {% endfor %}
-        </ul>
+      <h2>📌 Suggested Hashtags:</h2>
+      <ul>
+        {% for hashtag in hashtags %}
+          <li>{{ hashtag }}</li>
+        {% endfor %}
+      </ul>
+    {% elif labels %}
+      <p class="caption">No trending hashtags found — the algorithm might need a cup of tea 🫖</p>
     {% endif %}
+  </div>
 </body>
 </html>

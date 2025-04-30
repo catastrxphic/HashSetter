@@ -118,6 +118,8 @@ def analyze_image_wlabels(image_path, top_k = 5):
     Setp 2: Matching Top Labels to Hashtags
 
     This function will use previous output as input and map to its matching hashtags
+
+    Update: instead of using the hashmap, I will be using a connection to RiteTag to get trending hashtags
 """
 
 def match_labels_to_hashtags(labels):
@@ -127,3 +129,29 @@ def match_labels_to_hashtags(labels):
         hashtags.extend(hashtag_map.get(label, []))
 
     return hashtags
+
+def get_trending_hashtags_from_ritetag(keyword, fallback_hashtags=None, max_tags=5):
+    if not RITEKIT_API_KEY:
+        print("⚠️ Missing RiteTag API key.")
+        return fallback_hashtags or []
+
+    url = f"https://api.ritekit.com/v1/stats/hashtag-suggestions?text={keyword}&client_id={RITEKIT_API_KEY}"
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+
+        hashtag_entries = data.get("data", [])  # <-- this was the key you missed
+
+        if not hashtag_entries:
+            print(f"No trending hashtags found for: {keyword}")
+            return fallback_hashtags or []
+
+        hashtags = [f"#{entry['tag']}" for entry in hashtag_entries[:max_tags]]
+        print(f"✅ Trending for '{keyword}': {hashtags}")
+        return hashtags
+
+    except Exception as e:
+        print(f"Error getting trending hashtags for '{keyword}': {e}")
+        return fallback_hashtags or []
