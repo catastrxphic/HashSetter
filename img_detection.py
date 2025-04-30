@@ -2,6 +2,12 @@ import streamlit as st
 from PIL import Image
 import torch
 import clip
+import os
+from dotenv import load_dotenv
+import requests
+
+load_dotenv()
+RITEKIT_API_KEY = os.getenv("RITEKIT_API_KEY")
 
 item_labels = [
         "laptop", "keyboard", "tablet", "phone", "notebook", "planner", "calendar", "journal", "sticky notes", 
