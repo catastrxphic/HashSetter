@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Hashtag Suggester</title>
+</head>
+<body>
+    <h1>Upload a Photo 📷</h1>
+    
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="photo" accept="image/*" required>
+        <button type="submit">Upload & Analyze</button>
+    </form>
+
+    {% if labels %}
+        <h2>Detected Items:</h2>
+        <ul>
+            {% for label in labels %}
+                <li>{{ label }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if hashtags %}
+        <h2>Suggested Hashtags:</h2>
+        <ul>
+            {% for hashtag in hashtags %}
+                <li>{{ hashtag }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
