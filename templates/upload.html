@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hashtag Suggester ✨</title>
+  <title>HashSetter✨</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
@@ -100,6 +100,9 @@
     <form method="POST" enctype="multipart/form-data">
       <input type="file" name="photo" accept="image/*" required>
       <button type="submit">Upload & Analyze</button>
+      <br>
+      <label for="prompt">Optional Prompt (give more context of your post/style!):</label><br>
+      <input type="text" name="prompt" placeholder="e.g. studying math in a rainforest cafe" style="width: 100%; margin-top: 0.5rem; margin-bottom: 1rem;">
     </form>
 
     {% if labels %}
