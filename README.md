@@ -73,5 +73,5 @@ Suggested Hashtags:
 - [ ] One-click copy button for hashtags
 
 ## 🤍 Why I Built This
-As a lover of both aesthetics and algorithms, and a wannabe content creator ( [``@_catastrophic._``](https://www.instagram.com/_catastrophic._/) ), I wanted a tool that didn’t just process images, but understood them and helped like-minded people to find it -to create a community.
+As a lover of both aesthetics and algorithms, and a wannabe content creator ( [``@camis.locket``](https://www.instagram.com/camis.locket/) ), I wanted a tool that didn’t just process images, but understood them and helped like-minded people to find it -to create a community.
 This is for the bookworms, the artists, the wanderers who craft each post like a diary entry, and want hashtags to match the soul of their story.
